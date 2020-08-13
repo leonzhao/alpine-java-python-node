@@ -1,0 +1,4 @@
+FROM alpine-java-python-node
+WORKDIR /usr/workspace
+COPY ./install_script.sh /usr/workspace
+RUN sh /usr/workspace/install_script.sh
