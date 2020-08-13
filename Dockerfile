@@ -29,4 +29,5 @@ RUN python3 -m pip install -i https://mirrors.aliyun.com/pypi/simple/ --upgrade 
 RUN pip3 install -i https://mirrors.aliyun.com/pypi/simple/ -r /usr/workspace/requirements.txt
 
 COPY gradlew /usr/workspace
+COPY build.gradle /usr/workspace
 RUN ./gradlew

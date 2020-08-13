@@ -1,0 +1,55 @@
+buildscript {
+    ext {
+        springBootVersion = '2.2.4.RELEASE'
+    }
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+
+group = 'org.demo'
+version = '0.0.2-SNAPSHOT'
+sourceCompatibility = 11
+
+repositories {
+    mavenCentral()
+}
+
+ext {
+    springCloudVersion = 'Hoxton.SR1'
+}
+
+dependencies {
+    implementation('org.springframework.cloud:spring-cloud-starter-netflix-eureka-server')
+    runtimeOnly('org.springframework.boot:spring-boot-devtools')
+    testImplementation('org.springframework.boot:spring-boot-starter-test')
+    // https://mvnrepository.com/artifact/de.codecentric/spring-boot-admin-starter-client
+    compile group: 'de.codecentric', name: 'spring-boot-admin-starter-client', version: '2.2.2'
+
+    // java 11
+    // https://mvnrepository.com/artifact/com.sun.activation/javax.activation
+    compile group: 'com.sun.activation', name: 'javax.activation', version: '1.2.0'
+
+    // https://mvnrepository.com/artifact/javax.xml.bind/jaxb-api
+    compile group: 'javax.xml.bind', name: 'jaxb-api', version: '2.3.1'
+    
+    // https://mvnrepository.com/artifact/com.sun.xml.bind/jaxb-core
+    compile group: 'com.sun.xml.bind', name: 'jaxb-core', version: '2.3.0.1'
+
+    // https://mvnrepository.com/artifact/com.sun.xml.bind/jaxb-impl
+    compile group: 'com.sun.xml.bind', name: 'jaxb-impl', version: '2.3.2'
+}
+
+dependencyManagement {
+    imports {
+        mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+    }
+}
