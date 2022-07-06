@@ -1,4 +1,4 @@
 Click==7.0
 configparser==4.0.2
-lxml==4.4.2
+lxml==4.9.1
 python-docx==0.8.10
